@@ -11,6 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+//商品一覧画面
+Route::get('/', 'AdmController@showList')->name('products');
+
+// ブログ登録画面を表示
+Route::get('/product/create', 'AdmController@showCreate')->name('create');
+
+// ブログ登録
+Route::post('/product/store', 'AdmController@exeStore')->name('store');
+
+//商品詳細表示画面
+Route::get('/product/{id}', 'AdmController@showDetail')->name('show');

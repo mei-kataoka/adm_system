@@ -1,0 +1,19 @@
+<?php
+
+use App\Models\Company;
+use Illuminate\Database\Seeder;
+
+namespace Database\Seeds;
+
+class CompaniesSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        factory(Company::class, 10)->create();
+    }
+}

@@ -1,0 +1,20 @@
+<?php
+
+namespace Database\Seeds;
+
+use App\User;
+use Illuminate\Database\Seeder;
+use App\Models\Users;
+
+class UsersSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        factory(Users::class, 10)->create();
+    }
+}
