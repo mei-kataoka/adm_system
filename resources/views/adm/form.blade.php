@@ -1,6 +1,7 @@
 @extends('layout')
 @section('title', '商品登録')
 @section('content')
+
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
         <h2>商品登録フォーム</h2>
@@ -95,4 +96,5 @@
         }
     }
 </script>
+
 @endsection
