@@ -50,14 +50,11 @@
                         </li>
                         @endif
                         @else
-
-                        <a class="dropdown-item" href="{{ route('products') }}">
+                        <a class="dropdown-item" href="{{ route('create') }}">
                             {{ __('商品一覧') }}
                         </a>
-                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                 document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
+
+
                         </li>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

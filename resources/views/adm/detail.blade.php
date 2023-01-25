@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
 @section('title','商品詳細')
 @section('content')
 
@@ -9,6 +9,10 @@
       <h2>{{ $product -> product_name}}</h2>
       <span>作成日{{ $product ->created_at}}</span>
       <span>更新日{{ $product ->updated_at}}</span>
+
+
+
+
       <table class="table table-striped">
         <tr>
           <th>商品情報ID</th>
@@ -23,13 +27,13 @@
 
         <tr>
           <td>{{ $product->id }}</td>
-          <td>{{ $product->img_path }}</td>
+          <td><img src="{{asset('storage/'.$product->img_path)}}" alt="商品画像" style=" max-width: 100%;"></td>
           <td>{{ $product->product_name }}</td>
           <td>{{ $product->company_id}}</td>
           <td>{{ $product->price }}</td>
           <td>{{ $product->stock }}</td>
           <td>{{ $product->comment}}</td>
-          <td>編集</td>
+          <td><button type="button" class="btn btn-primary" onclick="location.href='/adm/public/product/edit/{{ $product->id }}'">編集</button></td>
 
         </tr>
       </table>
