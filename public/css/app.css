@@ -10961,8 +10961,16 @@ a.text-dark:focus {
     margin: 1cm;
   }
 
-  commentArea {
+  .commentArea {
     margin: 1cm;
+  }
+
+  .alertMessage {
+    color: #ff0000 !important;
+    ;
+    width: 100% !important;
+    text-align: center !important;
+    font-size: 10em !important;
   }
 
 }

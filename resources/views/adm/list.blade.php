@@ -5,7 +5,15 @@
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-2">
+
             <h2>商品情報</h2>
+            <div class="alert">
+                @if (session('message'))
+                <div class="alertMessage" style="color:red; ">
+                    {{ session('message') }}
+                </div>
+                @endif
+            </div>
 
             <form class="form-inline my-2 my-lg-0 ml-2" action="{{route('search')}}">
                 <div class="form-group">
@@ -59,6 +67,7 @@
 </div>
 <script>
     function checkDelete() {
+
         if (window.confirm('削除してよろしいですか？')) {
             return true;
         } else {
