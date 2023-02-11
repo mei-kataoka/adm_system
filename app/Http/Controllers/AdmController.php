@@ -105,23 +105,8 @@ class AdmController extends Controller
                 $img = $request->img_path->storeAs('/img', $imgName, 'public');
             }
             // 商品を登録
-            $product = new Product();
-            $product->fill([
-                'company_id' => $inputs['company_id'],
-                'product_name' => $inputs['product_name'],
-                'price' => $inputs['price'],
-                'stock' => $inputs['stock'],
-                'comment' => $inputs['comment'],
-                'img_path' => $img
-            ]);
-            $product->save();
-
-
-            \DB::commit();
-        } catch (\Throwable $e) {
-            \DB::rollback();
-            abort(500);
-        }
+        $product = new Product();
+        $productRegister = $product->register($request, $product);
 
         \Session::flash('err_msg', 'ブログを登録しました');
         return redirect(route('products'));
