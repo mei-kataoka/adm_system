@@ -40,6 +40,7 @@ class AdmController extends Controller
         $posts = $product->search($request, $product);
         return view('adm.list', ['products' => $posts, 'categories' => $products]);
     }
+    //非同期で動かしたい検索フォーム
     public function productSearch($searchId)
     {
         $products = Product::all();
