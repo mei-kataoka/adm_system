@@ -32,6 +32,7 @@ class AdmController extends Controller
      * 
      *
      */
+
     public function search(Request $request)
     {
         $product = new Product();
@@ -39,7 +40,12 @@ class AdmController extends Controller
         $posts = $product->search($request, $product);
         return view('adm.list', ['products' => $posts, 'categories' => $products]);
     }
-
+    public function productSearch($searchId)
+    {
+        $products = Product::all();
+        $posts = $products->where('product_name', 'LIKE', '%' . $searchId . '%');
+        return response()->json($posts);
+    }
     /*商品詳細を表示する
      *  @param int $id
      *  @return view
@@ -51,6 +57,7 @@ class AdmController extends Controller
 
         $product = new Product();
         $productId = $product->showDetail($id);
+
         return view('adm.detail', ['product' => $productId]);
     }
     /**

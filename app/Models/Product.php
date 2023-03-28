@@ -184,4 +184,18 @@ class Product extends Model
         //\Session::flash($flashMessage);
         return  $flashMessage;
     }
+    /*プルダウンメニュー
+     *  
+     *  
+     */
+    public static function selectlist()
+    {
+        $products = Product::all();
+        $list = array();
+        $list += array("" => "選択してください"); //selectlistの先頭を空に
+        foreach ($products as $product) {
+            $list += array($product->company_id => $product->company_id);
+        }
+        return $list;
+    }
 }
