@@ -27,25 +27,23 @@ class AdmController extends Controller
         $products = Product::all();
         return view('adm.list', ['products' => $products, 'categories' => $products]);
     }
+
     /**
-     * 検索フォーム
+     * 検索フォーム(要同期)
      * 
      *
      */
 
-    public function search(Request $request)
+
+    public function indexSearch(Request $request)
     {
-        $product = new Product();
-        $products = Product::all();
-        $posts = $product->search($request, $product);
-        return view('adm.list', ['products' => $posts, 'categories' => $products]);
-    }
-    //非同期で動かしたい検索フォーム
-    public function productSearch($searchId)
-    {
-        $products = Product::all();
-        $posts = $products->where('product_name', 'LIKE', '%' . $searchId . '%');
-        return response()->json($posts);
+        //非同期で動かしたい検索フォーム
+        //$product = Product::where('product_name',  $request)->get();
+
+        $keywords = $request->keyword;
+        //$product = Product::all();
+        $product = Product::where('product_name', 'like', '%' . $keywords . '%')->get();
+        return response()->json($product);
     }
     /*商品詳細を表示する
      *  @param int $id

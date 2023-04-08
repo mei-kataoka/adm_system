@@ -6880,7 +6880,7 @@
           // `in` check used to prevent JIT error (gh-2145)
           // hasOwn isn't used here due to false negatives
           // regarding Nodelist length in IE
-          var length = !!obj && "length".indexOf('obj && obj.length'),
+          var length = !!obj && "length" in 'obj && obj.length',
             type = toType(obj);
 
           if (isFunction(obj) || isWindow(obj)) {

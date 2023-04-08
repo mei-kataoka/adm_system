@@ -74,12 +74,11 @@ class Product extends Model
      */
     public function search($request)
     {
-        $keyword  = $request->input('search');
-        $categoryId = $request->input('categoryId');
-
+        //$keyword  = $request->input('search');
+        //$categoryId = $request->input('categoryId');
         $query = Product::query();
-        if (isset($keyword)) {
-            $query->where('product_name', 'LIKE', "%$keyword%");
+        if (isset($request)) {
+            $query->where('product_name', 'LIKE', '%$request%');
         }
         if (isset($categoryId)) {
             $query->where('company_id', $categoryId);

@@ -19,8 +19,8 @@
 //商品一覧画面
 Route::get('/product', 'AdmController@showList')->name('products');
 //商品検索
-Route::get('/product/listSearch/', 'AdmController@search')->name('search');
-Route::get('/productSearch', 'AdmController@search')->name('productSearch');
+
+Route::get('/product/search/', 'AdmController@indexSearch')->name('index');
 
 // 商品登録画面を表示
 Route::get('/product/create', 'AdmController@showCreate')->name('create');
