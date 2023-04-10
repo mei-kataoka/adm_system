@@ -23,11 +23,13 @@ $(document).on('click', '#searchBtn', function () {
         console.log(data);
         let html = 'test';
 
-        $.each(data, function () {
-            let product_name = $(this).product_name();
-            let price = $(this).price();
-            let stock = $(this).stock();
-            let company_id = $(this).company_id();
+        $.each(data, function (index, value) {
+            let id = value.id;
+            let company_id = value.product_name;
+            let price = value.price;
+            let stock = value.stock;
+            let img_path = value.img_path;
+
             html = `
                
     <tr class='table-row'>
