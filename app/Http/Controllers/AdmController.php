@@ -42,8 +42,8 @@ class AdmController extends Controller
 
         $keywords = $request->keyword;
         //$product = Product::all();
-        $product = Product::where('product_name', 'like', '%' . $keywords . '%')->get();
-        return response()->json($product);
+        $products = Product::where('product_name', 'like', '%' . $keywords . '%')->get();
+        return response()->json($products);
     }
     /*商品詳細を表示する
      *  @param int $id
