@@ -37,7 +37,7 @@ Route::get('/product/{id}', 'AdmController@showDetail')->name('show');
 Route::get('/product/edit/{id}', 'AdmController@showEdit')->name('edit');
 Route::post('/product/update', 'AdmController@exeUpdate')->name('update');
 
-//ブログ削除
+//商品削除
 Route::post('/product/delete/{id}', 'AdmController@exeDelete')->name('delete');
 
 Auth::routes();

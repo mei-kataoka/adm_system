@@ -29,7 +29,7 @@ class AdmController extends Controller
     }
 
     /**
-     * 検索フォーム(要同期)
+     * 検索フォーム
      * 
      *
      */
@@ -38,12 +38,9 @@ class AdmController extends Controller
     public function indexSearch(Request $request)
     {
         //非同期で動かしたい検索フォーム
-        //$product = Product::where('product_name',  $request)->get();
-
-        $keywords = $request->keyword;
-        //$product = Product::all();
-        $products = Product::where('product_name', 'like', '%' . $keywords . '%')->get();
-        return response()->json($products);
+        $products = new Product();
+        $product = $products->search($request);
+        return response()->json($product);
     }
     /*商品詳細を表示する
      *  @param int $id
