@@ -18,4 +18,11 @@ class Sale extends Model
         'product_id'
     ];
 
+    public function create($sale,$product){
+     $sale->fill([
+        'product_id' => $product['product_name']
+       ]);
+       return $sale;
+    }
+
 }

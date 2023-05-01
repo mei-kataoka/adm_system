@@ -204,4 +204,20 @@ class Product extends Model
         }
         return $list;
     }
+    /*
+     *購入処理  
+     *  
+     */
+     public static function saleUpdate($productUpdate,$product)
+    {
+             $productStock =$product->stock;
+             $stock = --$productStock;
+             $productUpdate =Product::find($product->id);
+             $productUpdate->update([
+               'stock' =>$stock
+             ]);
+
+
+        return $productUpdate;
+    }
 }

@@ -18,6 +18,7 @@ class VerController extends Controller
             
             $product =Product::find($request->id);
             
+            
             $result = [
                 'result'      => true,
                 'product_id' => $product->id,
@@ -44,9 +45,7 @@ class VerController extends Controller
         
         
         $productStock =$product->stock;
-       $sale =Sale::create([
-        'product_id' => $product['product_name']
-       ]);
+
         if( $productStock  <= 0){
              
             $productSale = [
@@ -57,11 +56,14 @@ class VerController extends Controller
             ];
 
         }else{
-            $stock = --$productStock;
-             $productSale =Product::find($product->id);
-             $productSale ->update([
-               'stock' =>$stock
-             ]);
+
+
+             $sale = new Sale();
+             $saleCreate = $sale->create($sale,$product);
+
+             $productUpdate = new Product();
+             $productSale = $productUpdate -> saleUpdate($productUpdate,$product);
+
         }
        
          return response()->json($productSale);
