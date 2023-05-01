@@ -91,7 +91,7 @@
 
 <script>
     function checkSubmit() {
-        if (window.confirm('送信してよろしいですか？')) {
+        if (window.confirm('登録してよろしいですか？')) {
             return true;
         } else {
             return false;

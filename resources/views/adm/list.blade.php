@@ -78,7 +78,7 @@
         <td>{{ $product->price }}</td>
         <td>{{ $product->stock }}</td>
         <td>{{ $product->company_id }}</td>
-        <td><a href="/adm/public/product/{{ $product->id }}">詳細</a></td>
+        <td><a href="/adm/public/product/{{ $product->id }} ">詳細</a></td>
         <td><button type="button" class="btn btn-primary" onclick="location.href='/adm/public/product/edit/{{ $product->id }}'">編集</button></td>
         <td>
 

@@ -44,7 +44,7 @@ $(document).on('click', '#searchBtn', function () {
              
   <tr class='table-row'>
       <td>${id}</td>
-      <td><img src="{{asset('storage/${img_path}')}}" style=" max-width: 100%;" alt=""></td>
+      <td><img src="{{asset('storage/${img_path}')}}" alt=""></td>
       <td>${product_name}</td>
       <td>${price}</td>
       <td>${stock}</td>

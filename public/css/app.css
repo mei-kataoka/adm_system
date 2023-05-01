@@ -1,5 +1,6 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);
 @charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Nunito);
+
 
 /*!
  * Bootstrap v4.6.2 (https://getbootstrap.com/)
@@ -10971,6 +10972,10 @@ a.text-dark:focus {
     width: 100% !important;
     text-align: center !important;
     font-size: 10em !important;
+  }
+
+  .table-row img {
+    height: 100px;
   }
 
 }
