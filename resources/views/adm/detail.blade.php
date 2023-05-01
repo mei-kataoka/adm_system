@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.listHeader')
 @section('title','商品詳細')
 @section('content')
 

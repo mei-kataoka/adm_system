@@ -54,10 +54,15 @@
                         </li>
                         @endif
                         @else
+                        @if (Request::routeIs('create'))
+                        <a class="dropdown-item" href="{{ route('products') }}">
+                            {{ __('商品一覧') }}
+                        </a>
+                        @else
                         <a class="dropdown-item" href="{{ route('create') }}">
                             {{ __('商品登録') }}
                         </a>
-
+                        @endif
 
                         </li>
 

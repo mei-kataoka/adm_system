@@ -1,4 +1,4 @@
-@extends('layouts.editHeader')
+@extends('layouts.listHeader')
 @section('title', '商品登録')
 @section('content')
 
