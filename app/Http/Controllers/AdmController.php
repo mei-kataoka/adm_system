@@ -112,10 +112,10 @@ class AdmController extends Controller
      */
 
 
-    public function exeDelete($id)
+    public function exeDelete(Request $request)
     {
-        $product = new Product();
-        $flashMessage = $product->productDelete($id);
-        return redirect()->route('products')->with('message', $flashMessage);
+        $products = new Product();
+        $list = $products->productDelete($request);
+        return response()->json($list);
     }
 }

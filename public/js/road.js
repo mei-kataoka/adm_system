@@ -1,30 +1,35 @@
 
 $(document).on('click', '#searchBtn', function () {
-    alert("クリックされました");
+
 
     let searchId = $('#keyword').val();
-    let categoryId = $('#category').val();
+    let categoryId = $('#categoryId').val();
+    let stockUp = $('#stockUp').val();
+    let stockDawn = $('#stockDawn').val();
 
-    if (!searchId) {
 
-    }
     $.ajax({
         type: 'GET',
         url: '/adm/public/product/search/',
         cache: false,
         data: {
             'keywordId': searchId,
-            'categoryId': categoryId, //ここはサーバーに贈りたい情報。今回は検索ファームのバリューを送りたい。
+            'categoryId': categoryId,
+            'stockUp': stockUp,
+            'stockDawn': stockDawn,
+
+            //ここはサーバーに贈りたい情報。今回は検索ファームのバリューを送りたい。
         },
 
 
     }).done(function (data) {//通信が成功したばあい
         $('.table-row').empty();
-        $('.loading').addClass('display-none');
-        console.log('ok');
         console.log(data);
+        $('.loading').addClass('display-none');
         let html = 'test';
-
+        if (data == null) {
+            $('.table-row').empty();
+        }
         $.each(data, function (index, value) {
 
 
@@ -46,9 +51,9 @@ $(document).on('click', '#searchBtn', function () {
       <td>${company_id}</td>
       <td><a href="/adm/public/product/${id} ">詳細</a></td>
       <td><button type="button" class="btn btn-primary" onclick="location.href='/adm/public/product/edit/${id} '">編集</button></td>
-      <form method="POST" action="{{ route('delete',${id} " onSubmit="return checkDelete()" enctype="multipart/form-data">
-          @csrf
-          <td><button type="submit" class="btn btn-primary" onclick="">削除</button></td>
+      <td>
+                <button id='deleteBtn' class="btn btn-info search-icon btn-primary" value='${id}'>削除</button>
+        </td>
   </tr>
        `;
             $('.user-table').append(html);
@@ -64,5 +69,55 @@ $(document).on('click', '#searchBtn', function () {
     }).always(function (data) {
         //通信の成否にかかわらず実行する処理 
     });
+});
+
+
+
+
+//削除
+
+$(document).on('click', '#deleteBtn', function () {
+    let clickEle = $(this);
+    let productId = clickEle.attr('value');
+    console.log(productId);
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    var deleteConfirm = confirm('削除してよろしいでしょうか？');
+    if (deleteConfirm == true) {
+
+
+
+        $.ajax({
+            type: 'POST',
+            url: '/adm/public/product/delete',
+            dataType: "text",
+            data: {
+                'id': productId,
+                '_method': 'DELETE' /// DELETE リクエストとつたえてる
+            },
+
+        }).done(function (data) {//通信が成功したばあい
+
+            clickEle.parents('tr').remove();
+            console.log(data);
+
+
+
+        }).fail(function (jqXHR, textStatus, errorThrown) { // 通信が失敗したときの処理
+            alert('ファイルの取得に失敗しました。');
+            console.log("ajax通信に失敗しました");
+            console.log("jqXHR          : " + jqXHR.status);
+            console.log("textStatus     : " + textStatus);
+            console.log("errorThrown    : " + errorThrown.message);
+        }).always(function (data) {
+
+
+        });
+    } else {
+        (function (e) { e.preventDefault() });
+    }
 });
 

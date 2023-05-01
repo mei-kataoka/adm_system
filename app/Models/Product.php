@@ -11,9 +11,7 @@ class Product extends Model
     protected $table = 'products';
 
     protected $primaryKey = 'id';
-    public $timestamps = false;
-    const CREATED_AT = null;
-    const UPDATED_AT = null;
+
 
     //可変項目
     protected $fillable  =
@@ -74,14 +72,24 @@ class Product extends Model
      */
     public function search($request)
     {
+
         $keywords = $request->keywordId;
         $category = $request->categoryId;
+        $stockUp = $request->stockUp;
+        $stockDawn = $request->stockDawn;
+
         $query = Product::query();
         if (isset($keywords)) {
             $query->where('product_name', 'LIKE', '%' . $keywords . '%')->get();
         }
         if (isset($category)) {
             $query->where('company_id', $category)->get();
+        }
+        if (isset($stockUp)) {
+            $query->where('price', '<', $stockUp)->get();
+        }
+        if (isset($stockDawn)) {
+            $query->where('price', '>=', $stockDawn)->get();
         }
         $posts = $query->get();
         return $posts;
@@ -164,8 +172,9 @@ class Product extends Model
      */
 
 
-    public function productDelete($id)
+    public function productDelete($request)
     {
+        $id = $request->id;
         if (empty($id)) {
             return redirect(route('products'));
         }

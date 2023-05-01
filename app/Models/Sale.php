@@ -8,10 +8,14 @@ class Sale extends Model
 {
     //テーブル名
     protected $table = 'sales';
+      protected $primaryKey = 'id';
+
+
 
     //可変項目
     protected $fillable  =
     [
         'product_id'
     ];
+
 }

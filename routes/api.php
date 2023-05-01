@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\AdmController;
+use App\Http\Controllers\API\VerController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,3 +17,9 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+//商品情報取得
+Route::post('ver', 'API\VerController@index')->name('index');
+//商品購入
+Route::post('ver/update', 'API\VerController@upDate')->name('upDate');

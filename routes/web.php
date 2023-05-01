@@ -38,6 +38,6 @@ Route::get('/product/edit/{id}', 'AdmController@showEdit')->name('edit');
 Route::post('/product/update', 'AdmController@exeUpdate')->name('update');
 
 //商品削除
-Route::post('/product/delete/{id}', 'AdmController@exeDelete')->name('delete');
+Route::delete('/product/delete', 'AdmController@exeDelete')->name('delete');
 
 Auth::routes();
